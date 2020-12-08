@@ -19,31 +19,37 @@
 	</tbody>
 </table>
 
+<div class="row">
+	<div class="col-sm-offset-3 col-sm-6">
+		<h2>Add user record</h2>
+	</div>
+</div>
+
 <form method="post" action="create.php" class="form-horizontal">
 	<div class="form-group">
-		<label for="name" class="col-lg-2 control-label">Name:</label>
-		<div class="col-lg-4">
+		<label for="name" class="col-sm-3 control-label">Name:</label>
+		<div class="col-sm-6">
 			<input name="name" input="text" id="name" class="form-control"/>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<label for="email" class="col-lg-2 control-label">E-mail:</label>
-		<div class="col-lg-4">
+		<label for="email" class="col-sm-3 control-label">E-mail:</label>
+		<div class="col-sm-6">
 			<input name="email" input="text" id="email" class="form-control"/>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<label for="city" class="col-lg-2 control-label">City:</label>
-		<div class="col-lg-4">
+		<label for="city" class="col-sm-3 control-label">City:</label>
+		<div class="col-sm-6">
 			<input name="city" input="text" id="city" class="form-control"/>
 		</div>
 	</div>
 	
 	<div class="form-group">
-		<div class="col-lg-offset-2 col-lg-4">
-			<button class="btn btn-default">Create new row</button>
+		<div class="col-sm-offset-3 col-sm-6">
+			<button class="btn btn-primary">Create new row</button>
 		</div>
 	</div>
 </form>
