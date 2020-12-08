@@ -1,6 +1,6 @@
 <h1>PHP Test Application</h1>
 
-<table id="users" class="table table-striped">
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Name</th>
@@ -14,7 +14,7 @@
 			</th>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="users">
 		<?foreach($users as $user){?>
 		<tr class="user">
 			<td class="name"><?=$user->getName()?></td>
@@ -25,17 +25,17 @@
 	</tbody>
 </table>
 
-<div class="row">
-	<div class="col-sm-offset-3 col-sm-6">
-		<h2>Add user record</h2>
+<form id="add-user" method="post" action="create.php" class="form-horizontal">
+	<div class="row">
+		<div class="col-sm-offset-3 col-sm-6">
+			<h2>Add user record</h2>
 
-		<? if($result === "success"): ?>
-		<p class="alert alert-success">User was added successfully.</p>
-		<? endif ?>
+			<? if($result === "success"): ?>
+			<p class="alert alert-success">User was added successfully.</p>
+			<? endif ?>
+		</div>
 	</div>
-</div>
 
-<form method="post" action="create.php" class="form-horizontal">
 	<div class="form-group <?=array_key_exists('name', $errors) ? 'has-error' : ''?>">
 		<label for="name" class="col-sm-3 control-label">Name:</label>
 		<div class="col-sm-6">
@@ -91,10 +91,49 @@ function filterCities(searchTerm) {
 	}
 }
 
+function submitFormByAjax(data) {
+	fetch("create.php", { method: "post", body: data })
+		.then(res => res.text())
+		.then(updatePage)
+		.catch(err => console.error(err));
+}
+
+function updatePage(html) {
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(html, "text/html");
+
+	replaceChildren(doc, "add-user");
+	replaceChildren(doc, "users");
+	resetSearch();
+}
+
+function replaceChildren(doc, id) {
+	const newEl = doc.getElementById(id);
+	const oldEl = document.getElementById(id);
+	oldEl.replaceChildren(...newEl.children);
+}
+
+function updateSearch() {
+	const searchInput = document.getElementById("city-filter");
+	filterCities(searchInput.value.toLowerCase());
+}
+
+function resetSearch() {
+	const searchInput = document.getElementById("city-filter");
+	searchInput.value = "";
+	updateSearch();
+}
+
 window.onload = function () {
 	const searchInput = document.getElementById("city-filter");
-	searchInput.addEventListener("keyup", () => {
-		filterCities(searchInput.value.toLowerCase());
+	searchInput.addEventListener("keyup", updateSearch);
+	
+	const form = document.getElementById("add-user");
+	form.addEventListener("submit", e => {
+		e.preventDefault();
+
+		const data = new FormData(form);
+		submitFormByAjax(data);
 	});
 };
 </script>
