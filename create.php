@@ -1,17 +1,16 @@
 <?php
 
-$app = require "./core/app.php";
-
-// Create new instance of user
-$user = new User($app->db);
-
 function sanitize_input($value) {
 	return trim(htmlspecialchars($value));
 }
 
-$name = sanitize_input($_POST['name']);
-$email = sanitize_input($_POST['email']);
-$city = sanitize_input($_POST['city']);
+function postParameter($name) {
+	return isset($_POST, $name) ? sanitize_input($_POST[$name]) : "";
+}
+
+$name = postParameter("name");
+$email = postParameter("email");
+$city = postParameter("city");
 
 $errors = [];
 
@@ -29,25 +28,23 @@ if (empty($email)) {
 	$errors["email"] = "Please enter a valid email address.";
 }
 
-if (empty($errors)) {
-	// Insert it to database with POST data
-	$user->insert(array(
-		'name' => $name,
-		'email' => $email,
-		'city' => $city
-	));
+$data = [
+	'name' => $name,
+	'email' => $email,
+	'city' => $city
+];
 
-	// Redirect back to index
+if (empty($errors)) {
+	$app = require "./core/app.php";	
+	$user = new User($app->db);
+	$user->insert($data);
+
 	header('Location: index.php?result=success');
 } else {
 	$query = http_build_query([
 		"result" => "error",
 		"error" => $errors,
-		"values" => [
-			"name" => $name,
-			"email" => $email,
-			"city" => $city
-		]
+		"values" => $data
 	]);
 
 	header("Location: index.php?$query");
