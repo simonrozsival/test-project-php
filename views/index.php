@@ -15,6 +15,7 @@
 					</span>
 				</div>
 			</th>
+			<th>Phone</th>
 		</tr>
 	</thead>
 	<tbody id="users">
@@ -23,6 +24,7 @@
 			<td class="name"><?=$user->getName()?></td>
 			<td class="email"><?=$user->getEmail()?></td>
 			<td class="city"><?=$user->getCity()?></td>
+			<td class="phone"><?=$user->getPhone()?></td>
 		</tr>
 		<?}?>
 	</tbody>
@@ -72,6 +74,17 @@
 		</div>
 	</div>
 	
+	<div class="form-group <?=array_key_exists('phone', $errors) ? 'has-error' : ''?>">
+		<label for="phone" class="col-sm-3 control-label">Phone:</label>
+		<div class="col-sm-6">
+			<input name="phone" input="text" id="phone" class="form-control" value="<?=htmlspecialchars($values["phone"])?>" />
+			
+			<? if(array_key_exists('phone', $errors)): ?>
+			<span class="help-block"><?=htmlspecialchars($errors["phone"])?></span>
+			<? endif ?>
+		</div>
+	</div>
+
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
 			<button class="btn btn-primary">Create new row</button>

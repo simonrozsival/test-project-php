@@ -11,6 +11,7 @@ function postParameter($name) {
 $name = postParameter("name");
 $email = postParameter("email");
 $city = postParameter("city");
+$phone = postParameter("phone");
 
 $errors = [];
 
@@ -22,6 +23,10 @@ if (empty($city)) {
 	$errors["city"] = "Please enter a city.";
 }
 
+if (empty($phone)) {
+	$errors["phone"] = "Please enter a phone number.";
+}
+
 if (empty($email)) {
 	$errors["email"] = "Please enter an email address.";
 } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -31,7 +36,8 @@ if (empty($email)) {
 $data = [
 	'name' => $name,
 	'email' => $email,
-	'city' => $city
+	'city' => $city,
+	'phone' => $phone
 ];
 
 if (empty($errors)) {
