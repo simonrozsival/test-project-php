@@ -1,5 +1,7 @@
 <?php
 
+include "./views/input.php";
+
 // Init app instance
 $app = require "./core/app.php";
 

@@ -41,49 +41,10 @@
 		</div>
 	</div>
 
-	<div class="form-group <?=array_key_exists('name', $errors) ? 'has-error' : ''?>">
-		<label for="name" class="col-sm-3 control-label">Name:</label>
-		<div class="col-sm-6">
-			<input name="name" input="text" id="name" class="form-control" value="<?=htmlspecialchars($values["name"])?>" />
-
-			<? if(array_key_exists('name', $errors)): ?>
-			<span class="help-block"><?=htmlspecialchars($errors["name"])?></span>
-			<? endif ?>
-		</div>
-	</div>
-	
-	<div class="form-group <?=array_key_exists('email', $errors) ? 'has-error' : ''?>">
-		<label for="email" class="col-sm-3 control-label">E-mail:</label>
-		<div class="col-sm-6">
-			<input name="email" input="text" id="email" class="form-control" value="<?=htmlspecialchars($values["email"])?>" />
-
-			<? if(array_key_exists('email', $errors)): ?>
-			<span class="help-block"><?=htmlspecialchars($errors["email"])?></span>
-			<? endif ?>
-		</div>
-	</div>
-	
-	<div class="form-group <?=array_key_exists('city', $errors) ? 'has-error' : ''?>">
-		<label for="city" class="col-sm-3 control-label">City:</label>
-		<div class="col-sm-6">
-			<input name="city" input="text" id="city" class="form-control" value="<?=htmlspecialchars($values["city"])?>" />
-			
-			<? if(array_key_exists('city', $errors)): ?>
-			<span class="help-block"><?=htmlspecialchars($errors["city"])?></span>
-			<? endif ?>
-		</div>
-	</div>
-	
-	<div class="form-group <?=array_key_exists('phone', $errors) ? 'has-error' : ''?>">
-		<label for="phone" class="col-sm-3 control-label">Phone:</label>
-		<div class="col-sm-6">
-			<input name="phone" input="text" id="phone" class="form-control" value="<?=htmlspecialchars($values["phone"])?>" />
-			
-			<? if(array_key_exists('phone', $errors)): ?>
-			<span class="help-block"><?=htmlspecialchars($errors["phone"])?></span>
-			<? endif ?>
-		</div>
-	</div>
+	<?= createInput("name", "Name", $values, $errors) ?>
+	<?= createInput("email", "E-mail", $values, $errors) ?>
+	<?= createInput("city", "City", $values, $errors) ?>
+	<?= createInput("phone", "Phone", $values, $errors) ?>
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
