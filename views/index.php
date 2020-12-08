@@ -1,19 +1,25 @@
 <h1>PHP Test Application</h1>
 
-<table class="table table-striped">
+<table id="users" class="table table-striped">
 	<thead>
 		<tr>
 			<th>Name</th>
 			<th>E-mail</th>
-			<th>City</th>
+			<th>
+				City
+				<div class="input-group">
+					<span class="input-group-addon">🔍</span>
+					<input type="search" id="city-filter" class="form-control input-sm">
+				</div>
+			</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?foreach($users as $user){?>
-		<tr>
-			<td><?=$user->getName()?></td>
-			<td><?=$user->getEmail()?></td>
-			<td><?=$user->getCity()?></td>
+		<tr class="user">
+			<td class="name"><?=$user->getName()?></td>
+			<td class="email"><?=$user->getEmail()?></td>
+			<td class="city"><?=$user->getCity()?></td>
 		</tr>
 		<?}?>
 	</tbody>
@@ -70,3 +76,25 @@
 		</div>
 	</div>
 </form>
+
+<script>
+function filterCities(searchTerm) {
+	const rows = document.querySelectorAll(".user");
+	for (let row of rows) {
+		const cityCell = row.querySelector(".city");
+		const city = cityCell.innerText.toLowerCase();
+		if (city.includes(searchTerm)) {
+			row.classList.remove("hidden");
+		} else {
+			row.classList.add("hidden");
+		}
+	}
+}
+
+window.onload = function () {
+	const searchInput = document.getElementById("city-filter");
+	searchInput.addEventListener("keyup", () => {
+		filterCities(searchInput.value.toLowerCase());
+	});
+};
+</script>
