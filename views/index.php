@@ -1,6 +1,6 @@
 <h1>PHP Test Application</h1>
 
-<table>
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Name</th>
