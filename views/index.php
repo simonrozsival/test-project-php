@@ -72,7 +72,7 @@
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
 			<button class="btn btn-primary">Create new row</button>
-			<a href="index.php" class="btn btn-default">Reset<a>
+			<a href="index.php" class="btn btn-default">Reset</a>
 		</div>
 	</div>
 </form>
