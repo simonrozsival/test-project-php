@@ -17,10 +17,9 @@
 		</tr>
 		<?}?>
 	</tbody>
-</table>				
+</table>
 
 <form method="post" action="create.php">
-	
 	<label for="name">Name:</label>
 	<input name="name" input="text" id="name"/>
 	
