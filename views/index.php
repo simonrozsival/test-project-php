@@ -10,6 +10,9 @@
 				<div class="input-group">
 					<span class="input-group-addon">🔍</span>
 					<input type="search" id="city-filter" class="form-control input-sm">
+					<span class="input-group-btn">
+						<button id="clear-search" class="btn btn-default btn-sm" type="button">✖</button>
+					</span>
 				</div>
 			</th>
 		</tr>
@@ -128,6 +131,12 @@ window.onload = function () {
 	const searchInput = document.getElementById("city-filter");
 	searchInput.addEventListener("keyup", updateSearch);
 	
+	const clearSearchButton = document.getElementById("clear-search");
+	clearSearchButton.addEventListener("click", e => {
+		e.preventDefault();
+		resetSearch();
+	});
+
 	const form = document.getElementById("add-user");
 	form.addEventListener("submit", e => {
 		e.preventDefault();
