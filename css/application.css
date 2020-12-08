@@ -1,15 +1,3 @@
 .table thead > tr > th {
     vertical-align: top;
 }
-
-tbody td.name {
-    width: 30%;
-}
-
-tbody td.email {
-    width: 40%;
-}
-
-tbody td.city {
-    width: 30%;
-}
