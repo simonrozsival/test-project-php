@@ -19,15 +19,31 @@
 	</tbody>
 </table>
 
-<form method="post" action="create.php">
-	<label for="name">Name:</label>
-	<input name="name" input="text" id="name"/>
+<form method="post" action="create.php" class="form-horizontal">
+	<div class="form-group">
+		<label for="name" class="col-lg-2 control-label">Name:</label>
+		<div class="col-lg-4">
+			<input name="name" input="text" id="name" class="form-control"/>
+		</div>
+	</div>
 	
-	<label for="email">E-mail:</label>
-	<input name="email" input="text" id="email"/>
+	<div class="form-group">
+		<label for="email" class="col-lg-2 control-label">E-mail:</label>
+		<div class="col-lg-4">
+			<input name="email" input="text" id="email" class="form-control"/>
+		</div>
+	</div>
 	
-	<label for="city">City:</label>
-	<input name="city" input="text" id="city"/>
+	<div class="form-group">
+		<label for="city" class="col-lg-2 control-label">City:</label>
+		<div class="col-lg-4">
+			<input name="city" input="text" id="city" class="form-control"/>
+		</div>
+	</div>
 	
-	<button>Create new row</button>
+	<div class="form-group">
+		<div class="col-lg-offset-2 col-lg-4">
+			<button class="btn btn-default">Create new row</button>
+		</div>
+	</div>
 </form>
