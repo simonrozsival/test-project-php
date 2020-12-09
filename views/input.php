@@ -1,11 +1,13 @@
 <?php
 
-function createInput($name, $label, $values, $errors) {
+function createInput($name, $label, $type, $values, $errors) {
 ?>
     <div class="form-group <?=array_key_exists($name, $errors) ? 'has-error' : ''?>">
         <label for="<?=$name?>" class="col-sm-3 control-label"><?=$label?>:</label>
         <div class="col-sm-6">
             <input
+                type="<?=$type?>"
+                required
                 name="<?=$name?>"
                 input="text"
                 id="<?=$name?>"

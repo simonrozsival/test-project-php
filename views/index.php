@@ -41,10 +41,10 @@
 		</div>
 	</div>
 
-	<?= createInput("name", "Name", $values, $errors) ?>
-	<?= createInput("email", "E-mail", $values, $errors) ?>
-	<?= createInput("city", "City", $values, $errors) ?>
-	<?= createInput("phone", "Phone", $values, $errors) ?>
+	<?= createInput("name", "Name", "text", $values, $errors) ?>
+	<?= createInput("email", "E-mail", "email", $values, $errors) ?>
+	<?= createInput("city", "City", "text", $values, $errors) ?>
+	<?= createInput("phone", "Phone", "text", $values, $errors) ?>
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
