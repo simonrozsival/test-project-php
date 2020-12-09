@@ -48,7 +48,7 @@
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
-			<button class="btn btn-primary">Create</button>
+			<button class="btn btn-primary" id="create-user">Create</button>
 			<a href="index.php" class="btn btn-default">Reset</a>
 		</div>
 	</div>
@@ -69,7 +69,7 @@ function filterCities(searchTerm) {
 }
 
 function submitFormByAjax(data) {
-	fetch("create.php", { method: "post", body: data })
+	return fetch("create.php", { method: "post", body: data })
 		.then(res => res.text())
 		.then(updatePage)
 		.catch(err => console.error(err));
@@ -112,11 +112,14 @@ window.onload = function () {
 	});
 
 	const form = document.getElementById("add-user");
+	const createUserButton = document.getElementById("create-user");
 	form.addEventListener("submit", e => {
 		e.preventDefault();
+		createUserButton.disabled = true;
 
 		const data = new FormData(form);
-		submitFormByAjax(data);
+		submitFormByAjax(data)
+			.finally(() => createUserButton.disabled = false);
 	});
 };
 </script>
