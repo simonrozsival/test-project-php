@@ -33,7 +33,7 @@
 <form id="add-user" method="post" action="create.php" class="form-horizontal">
 	<div class="row">
 		<div class="col-sm-offset-3 col-sm-6">
-			<h2>Add user record</h2>
+			<h2>Create user</h2>
 
 			<? if($result === "success"): ?>
 			<p class="alert alert-success">User was added successfully.</p>
@@ -48,7 +48,7 @@
 
 	<div class="form-group">
 		<div class="col-sm-offset-3 col-sm-6">
-			<button class="btn btn-primary">Create new row</button>
+			<button class="btn btn-primary">Create</button>
 			<a href="index.php" class="btn btn-default">Reset</a>
 		</div>
 	</div>
